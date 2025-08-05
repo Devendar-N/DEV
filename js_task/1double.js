@@ -1,18 +1,18 @@
 /*Create a function that doubles the even numbers in an array.
 Input: [2, 5, 8, 9, 4]
 Output: [4, 5, 16, 9, 8]*/
-const Output=[]
-const array=[2, 5, 8, 9, 4];
-function multiple(){
-    array.forEach((value)=>{
-    if(value%2==0){
-        value=value*2
-        Output.push(value)
+const output=[];
+const input_array=[2, 5, 8, 9, 4];
+function multiple_even_numbers_in_array(){
+    for(let i=0;i<input_array.length;i++){
+    if(input_array[i]%2==0){
+        output[i]=input_array[i]*2;
     }
     else{
-        Output.push(value)
+        output[i]=input_array[i];
     }
-});
-console.log("Output after multiplying even Numbers in a Array :",Output)
+    manual_index++;
 }
-multiple()
+console.log("Output after multiplying even Numbers in a Array :",output);
+}
+multiple_even_numbers_in_array()
