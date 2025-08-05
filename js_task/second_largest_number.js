@@ -15,7 +15,7 @@ function finding_second_largest_number(number){
                 swapped = true ;
             }
         }
-    }while(swapped);
+    }while(swapped) ;
     return number ;
 }
 finding_second_largest_number(input)
