@@ -13,4 +13,4 @@ function paddingwith_stars(word, count) {
 }
 
 
-paddingwith_stars('code', 5)
+paddingwith_stars('code', 3)
