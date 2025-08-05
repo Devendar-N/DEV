@@ -13,6 +13,6 @@ function multiple(){
         Output.push(value)
     }
 });
-console.log("Added the Even Numbers in a Array :",Output)
+console.log("Output after multiplying even Numbers in a Array :",Output)
 }
 multiple()
