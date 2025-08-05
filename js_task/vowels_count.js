@@ -6,7 +6,7 @@ const input = "numentica ui"
 let converted_array = []
 function convert_to_array(array){   //Function that convert a string to array
     for(let i = 0 ; i < array.length ; i++){
-        converted_array[i] = array[i]  // Storing the converted array in output_array variable
+        converted_array[i] = array[i]  // Save the converted array in output_array variable
     }
 }
 function count_vowels(value){   // Function that counts number of vowels in given input
