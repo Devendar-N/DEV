@@ -16,6 +16,6 @@ function finding_second_largest_number(number){
             }
         }
     }while(swapped) ;
-    return number ;
+    console.log( number ) ;
 }
-finding_second_largest_number(input)
+finding_second_largest_number("The second largest number = " ,input)
