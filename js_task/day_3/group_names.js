@@ -35,7 +35,6 @@ function groupNamesByInitialLetter(input_array){
             while( current_group[index] != undefined){
                 index++ ;
             }
-            //current_name = current_name.toLowerCase();
             // adding the names to created groups
             current_group[index] = current_name ;
         }
