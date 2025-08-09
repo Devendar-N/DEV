@@ -7,6 +7,10 @@ function sum_of_largest(userInput,numbersToAdd){
     if(userInput.length === 0){
         console.log("Empty array.!");
     }
+    else if(numbersToAdd === undefined || numbersToAdd <= 0 
+        || typeof numbersToAdd !== 'number' ){
+            console.log("Please provide how many values to sum and it must be a positive number")
+        }
     else if(isNaN(userInput) !== true || userInput.length === 1){
         console.log("Invalid input..!")
     }
@@ -37,4 +41,4 @@ function sum_of_largest(userInput,numbersToAdd){
         console.log("Sum of largest numbers =",sumOfNumbers)
     }
 }
-sum_of_largest(input,6)
+sum_of_largest(input)
