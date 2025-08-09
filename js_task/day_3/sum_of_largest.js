@@ -2,28 +2,39 @@
 Input: [32, 66, 80, 120, 45]
 Output: 200*/
 
-const input = [32, 66, 80, 120, 45] ;
-let sorted_array = [] ;
-function sum_of_largest(input_array,numbers_to_add){
-    let addition_of_numbers = 0 ;
-    numbers_to_add -=1 ;
-    
-    // sorting the given input
-    for(let i = 0; i < input_array.length ; i++){
-        for(let j = 0; j <input_array.length ; j++) {
-            if(input_array[j] < input_array[j+1]){
-                let swap_variable = input_array[j] ;
-                input_array[j] = input_array[j+1] ;
-                input_array[j+1] = swap_variable ;
+const input = [32, 66, 80, 120, 45];
+function sum_of_largest(userInput,numbersToAdd){
+    if(userInput.length === 0){
+        console.log("Empty array.!");
+    }
+    else if(isNaN(userInput) !== true || userInput.length === 1){
+        console.log("Invalid input..!")
+    }
+    else if(userInput.length < numbersToAdd){
+        console.log("Need minimum",numbersToAdd,"values. You have only",userInput.length)
+    }
+    else{
+        let sorted = [] ;
+        for(let i = 0; i< userInput.length;i++){
+            sorted[i] = userInput[i] ;
+        }
+        let sumOfNumbers = 0 ;
+        // sorting the given input
+        for(let i = 0; i < sorted.length ; i++){
+            for(let j = 0; j <sorted.length ; j++) {
+                if(sorted[j] < sorted[j+1]){
+                   let swapVariable = sorted[j] ;
+                   sorted[j] = sorted[j+1] ;
+                   sorted[j+1] = swapVariable ;
+                }
             }
         }
+        //Sum of largest numbers
+        numbersToAdd -=1 ;
+        for(let a= 0; a <= numbersToAdd ; a++){
+        sumOfNumbers += sorted[a] ;
+        }
+        console.log("Sum of largest numbers =",sumOfNumbers)
     }
-
-    //Sum of largest numbers
-    for(let a= 0; a <= numbers_to_add ; a++){
-    addition_of_numbers = addition_of_numbers + input_array[a] ;
-    }
-
-    console.log("Sum of",numbers_to_add+1,"largest numbers",addition_of_numbers)
 }
-sum_of_largest(input,2)
+sum_of_largest(input,6)

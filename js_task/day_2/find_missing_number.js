@@ -2,7 +2,7 @@
 Input: [68, 71, 69, 73]
 Output: missing numbers in range [68-73] is 70, 72*/
 const input = [68, 71, 69, 73]
-const missing_number = [] ;
+const missing_number = [];
 function find_missing_number(input_array){
     // Sorting the user input in descending order
     for(let a = 0; a < input_array.length ; a++){

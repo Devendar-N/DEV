@@ -1,25 +1,26 @@
 /*Add "@" after each occurrence of character "c" in a string
 Input: "cat in the bag"
 Output: "c@at in the bag"*/
-const input = "Cat in the bag" ;
-let convert_array = [] ;
-let final_output = '' ;
-function adding_symbol(string,letter,symbol){
-    string = string.toLowerCase()
-    // converting string to array
-    for(let i = 0; i < string.length ; i++){
-        convert_array[i] = string[i] ;
-
-        //Add symbol near character
-        if(convert_array[i] == letter){
-           convert_array[i]= convert_array[i]+symbol ;
+function addingSymbol(string,letter,symbol){
+    const inputType = typeof string;
+    if(string === 0){
+        console.log("Empty string!");
+    }
+    else if ( inputType !== "string"){
+        console.log("Invalid input.");
+    }
+    else{
+        let result = '' ;
+        for(let i = 0; i < string.length ; i++){
+            let currentCharacter = string[i];
+            if(currentCharacter === letter || currentCharacter ===letter.toUpperCase()){
+                result += currentCharacter + symbol;
+            }
+            else{
+                result += currentCharacter;
+            }
         }
+        console.log(result);
     }
-
-    //Again converting array to string
-    for(let j = 0; j < convert_array.length ; j++){
-        final_output += convert_array[j] ;
-    }
-    console.log(final_output)
 }
-adding_symbol(input,'c','*')
+addingSymbol("cat in the bag",'c','@')
