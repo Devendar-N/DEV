@@ -8,7 +8,10 @@ function filterInvalidItems(array,invalid){
     let index = 0;           // to increase length of invalid_items array
     // check the user input
     if(typeof array !== 'object'){
-        console.log("Empty input") ;
+        console.log("Empty input.Please enter the input.!") ;
+    }
+    else if(array.length === 0 || invalid.length === 0){
+        console.log("Please enter the input or invalid items to remove.")
     }
     else{
         // Filter the items 
@@ -21,4 +24,4 @@ function filterInvalidItems(array,invalid){
         console.log(validItems) ;
     }
 }
-filterInvalidItems(["a", "d", 1, true, "cd", 33,[12,33,67]], "Number")
+filterInvalidItems(["a","d",1,true,"cd",33] ,'object')

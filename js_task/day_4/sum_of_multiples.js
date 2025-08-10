@@ -5,7 +5,6 @@ findSum(8, 3) should return 8+16+24=48*/
 
 function findSum(value,power){
     let total = 0;
-
     // check the user input is valid
     if(power == undefined || value == ''|| value == undefined || power == ''){
         console.log("Invalid input");
