@@ -33,4 +33,4 @@ function findRepeatingCharacetr(inputString){
     }
 
 }
-findRepeatingCharacetr("trAAAaaainngfornewbie")
+findRepeatingCharacetr("traaainngfornewbie")
