@@ -18,7 +18,6 @@ function convert_to_array(input_string){
     // converting string to array
     for(let i = 0;i <= input_string.length -1; i++){
         let character = input_string[i] ;
-        console.log('character', character);
         if(input_string[i] == ','){
 
             converted_array[converted_array.length] = swap_variabel ;
@@ -31,7 +30,7 @@ function convert_to_array(input_string){
     if (swap_variabel) {
         converted_array[converted_array.length] = swap_variabel;
     }
-    console.log('converted array', converted_array, swap_variabel);
+    console.log('converted array', converted_array);
     let total = 0;
     for(let j =0 ; j < converted_array.length ; j++){
 
