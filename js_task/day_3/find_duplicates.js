@@ -5,7 +5,7 @@ Output: [2, 3]
 
 function findDupicates(userInput){
     if(typeof userInput !== 'object'){
-        console.log("Invalid input..!")
+        console.log("Invalid input..!,please check your input.")
     }
     else if(userInput.length === 0){
         console.log("Empty array..!")
@@ -42,4 +42,4 @@ function findDupicates(userInput){
 console.log("Duplicate values =",duplicateValue) ;
     }
 }
-findDupicates([1, 2, 3, 2, 4, 5, 3, 6])
+findDupicates([1, 2, 3, 2, 4, 5, 3, 6]);

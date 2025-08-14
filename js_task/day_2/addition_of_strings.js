@@ -36,7 +36,7 @@ function convert_to_array(input_string){
 
         // converting string value inside a array to number
         let number = parseFloat(converted_array[j])
-        total = total + number ;
+        total += number ;
     }
         console.log("Addition of string :",total)
     }

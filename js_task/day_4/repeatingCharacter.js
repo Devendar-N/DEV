@@ -4,33 +4,38 @@ charRepeating(“traaainngfornewbie”);
 Output: a
 // since a has more repeating simaltaneously*/
 
-function findRepeatingCharacetr(inputString){
-    if(typeof inputString !== 'string'){
-        console.log("Invalide input!.Please enter the string as input.");
-    }
-    else if(inputString === 0 || inputString.trim() === 0){
-        console.log("Empty string!. please input string");
-    }
-    else{
-        let currentCharacter = '';
-        let currentCharacterCount = 0;
-        let mostConsecutiveCharacter = '';
-        let mostConsecutiveCharacterCount = 0;
-        for(let i = 0; i < inputString.length; i++){
-            if(currentCharacter === inputString[i]){
-                currentCharacterCount++;
-            }
-            else{
-                currentCharacter = inputString[i];
-                currentCharacterCount = 1;
-            }
-            if(currentCharacterCount > mostConsecutiveCharacterCount){
-                mostConsecutiveCharacter = currentCharacter;
-                mostConsecutiveCharacterCount = currentCharacterCount;
+function findRepeatingCharacter(inputString){
+    let mostRepeatingCharacter=[]
+    let character ='';
+    let characterCount=0;
+    let maxcount =0;
+    for(let i =0;i<inputString.length;i++){
+        if(inputString[i] === character){
+            characterCount++;
+        }
+       else{
+            character=inputString[i];
+            characterCount=1;
+        }
+        if(characterCount>maxcount){
+            maxcount=characterCount;
+            mostRepeatingCharacter=[];
+            mostRepeatingCharacter[0]=character;
+        }
+        else if(characterCount===maxcount){
+            let alreadyAdded =false;
+            for(let j =0;j<mostRepeatingCharacter.length;j++){
+                if(mostRepeatingCharacter[j]===character){
+                    alreadyAdded=true;
+                    break;
+                }
+                if(!alreadyAdded){ 
+                    mostRepeatingCharacter[mostRepeatingCharacter.length]=character;
+                }
             }
         }
-        console.log("The characters that are repeating the most simaltaneously is:",mostConsecutiveCharacter)
-    }
 
+    }
+    console.log(mostRepeatingCharacter)
 }
-findRepeatingCharacetr("traaainngfornewbie")
+findRepeatingCharacter("traaainnngfornewwwwbie")

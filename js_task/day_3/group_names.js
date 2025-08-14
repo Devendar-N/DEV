@@ -6,7 +6,7 @@ Output
 ["cathy"]
 ["krish", "kamal"]*/
 
-let input = ["arun", "balu", "cathy", "krish", "aadhir", "aariketh", "kamal"]
+let input = ["arun", "balu", "cathy", "krish", "Aadhir", "aariketh", "kamal"]
 function groupNamesByInitialLetter(inputNames){ 
 
     //check the input
