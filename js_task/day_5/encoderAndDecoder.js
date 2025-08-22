@@ -9,8 +9,12 @@ decode(“evyr”, 4) -> arun*/
 function encode(nameToEncode, shift) {
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     let maskNames = "";
+
+    //loop through the given input
     for (let i = 0; i < nameToEncode.length; i++) {
         let character = nameToEncode[i];
+
+        //shift the character 
         for (let j = 0; j < alphabet.length; j++) {
             if (character === alphabet[j]) {
                 maskNames += alphabet[[j + shift]%alphabet.length];
@@ -22,8 +26,12 @@ function encode(nameToEncode, shift) {
 function decode(nameToDecode, shiftValue) {
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     let unmaskNames = "";
+
+    //loop through the given input
     for (let i = 0; i < nameToDecode.length; i++) {
         let character = nameToDecode[i];
+
+        //shift the character 
         for (let j = 0; j < alphabet.length; j++) {
             if (character === alphabet[j]) {
                 unmaskNames += alphabet[[j - shiftValue+alphabet.length]%alphabet.length];
