@@ -2,8 +2,10 @@
 Find the country which has the highest income.
 Find the country which has the combined highest income
 Get all the users info (complete info) who has the email which ends with .gov
-Find the country name which has the maximum combined income for Female*/
-const jsonData = require('../users-db.json');
+Find the country name which has the maximum combined income for Female
+*/
+
+// Find the country which has the highest income.
 function findHighestIncome(userData) {
     let highestIncome = 0;
     let country;
@@ -19,6 +21,7 @@ function findHighestIncome(userData) {
     return true;
 }
 
+//Find the country which has the combined highest income
 function findHighestCombinedIncome(userData) {
     let countyIncome = {};
     for (let i = 0; i < userData.length; i++) {
@@ -40,58 +43,108 @@ function findHighestCombinedIncome(userData) {
     return true;
 }
 
+// Find the country name which has the maximum combined income for Female
 function findHighestCombaineGenderIncome(userData, gender) {
-    let countryFemaleIncome = {};
-    for (let i = 0; i < userData.length; i++) {
-        if (countryFemaleIncome[userData[i].country] === undefined) {
-            countryFemaleIncome[userData[i].country] = 0;
-        }
-        if (userData[i].gender.toLowerCase() === gender) {
-            countryFemaleIncome[userData[i].country] = countryFemaleIncome[userData[i].country] + userData[i].income;
-        }
+    if (typeof gender !== 'string' || gender.length === 0) {
+        console.error("Invalid input for gender!");
+        return false;
     }
-    let highestIncome = 0;
-    let highestCountry = '';
-    for (const country in countryFemaleIncome) {
-        const income = countryFemaleIncome[country];
-        if (income > highestIncome) {
-            highestIncome = income;
-            highestCountry = country;
+    else {
+        let countryFemaleIncome = {};
+        for (let i = 0; i < userData.length; i++) {
+            if (countryFemaleIncome[userData[i].country] === undefined) {
+                countryFemaleIncome[userData[i].country] = 0;
+            }
+            if (userData[i].gender.toLowerCase() === gender) {
+                countryFemaleIncome[userData[i].country] = countryFemaleIncome[userData[i].country] + userData[i].income;
+            }
         }
+        let highestIncome = 0;
+        let highestCountry = '';
+        for (const country in countryFemaleIncome) {
+            const income = countryFemaleIncome[country];
+            if (income > highestIncome) {
+                highestIncome = income;
+                highestCountry = country;
+            }
+        }
+        console.log(`${highestCountry} has the highest ${gender} combined income of ${highestIncome}`);
+        return true;
     }
-    console.log(`${highestCountry} has the highest ${gender} combined income of ${highestIncome}`);
-    return true
 }
 
+//Get all the users info (complete info) who has the email which ends with domain
 function filterDomain(userData, domain) {
-    let filteredDomain = [];
-    for (let i = 0; i < userData.length; i++) {
-        const email = userData[i].email.split(".");
-        const userDomain = email[email.length - 1]
-        if (userDomain === domain) {
-            filteredDomain.push(userData[i]);
+    if (typeof domain !== 'string' || domain.length === 0) {
+        console.error("Invalid domain!.");
+        return false;
+    }
+    else {
+        let filteredDomain = [];
+        for (let i = 0; i < userData.length; i++) {
+            const email = userData[i].email.split(".");
+            const userDomain = email[email.length - 1]
+            if (userDomain === domain) {
+                filteredDomain.push(userData[i]);
+            }
         }
+        console.table(filteredDomain);
+        return true;
     }
-    console.table(filteredDomain);
-    return true;
 }
 
+// Paginated 
 function getPaginatedResult(userData, pageNumber, pageSize) {
-    const startIndex = (pageNumber - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const paginated = [];
-    for (let i = startIndex; i < endIndex && i < userData.length; i++) {
-        paginated.push(userData[i]);
+    if (typeof pageNumber !== 'number' || typeof pageSize !== 'number') {
+        console.error("Invalid input for page number/page size!.");
+        return false;
     }
-    console.table(paginated)
-    return true;
+    else if (pageNumber <= 0 || pageSize <= 0) {
+        console.error("page number/page size sholud be in minus or zero .");
+        return false;
+    }
+    else {
+        const startIndex = (pageNumber - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const paginated = [];
+        for (let i = startIndex; i < endIndex && i < userData.length; i++) {
+            paginated.push(userData[i]);
+        }
+        console.table(paginated);
+        return true;
+    }
 }
-// function handleEdgeCases(inputData) {
-//     for(let i=0;i<inputData.length)
-//     findHighestIncome(jsonData);
-//     findHighestCombinedIncome(jsonData);
-//     findHighestCombaineGenderIncome(jsonData, 'female');
-//     filterDomain(jsonData, 'gov');
-    getPaginatedResult(jsonData, 2, 15);
 
-//}
+// Function to handle Edge cases and calling all function in a function..
+function handleEdgeCases() {
+    const jsonData = require('../users-db.json');
+    let validFile = false;
+    
+        for (let i = 0; i < jsonData.length; i++) {
+            let fileData = jsonData[i];
+            if (typeof fileData.id !== 'number' || typeof fileData.income !== 'number') {
+                console.log(fileData);
+                console.error("Invalid data in your file.");
+                break;
+            }
+            else if (typeof fileData.first_name !== 'string'
+                || typeof fileData.last_name !== 'string'
+                || typeof fileData.email !== 'string'
+                || typeof fileData.gender !== 'string'
+                || typeof fileData.country !== 'string') {
+                console.error("Invalid data in your file!.");
+                break;
+            }
+            else {
+                validFile = true;
+            }
+        }
+        if (validFile) {
+            findHighestIncome(jsonData);
+            findHighestCombinedIncome(jsonData);
+            findHighestCombaineGenderIncome(jsonData, 'animal');
+            filterDomain(jsonData, 'gov');
+            getPaginatedResult(jsonData, 2, 20);
+        }
+}
+handleEdgeCases()

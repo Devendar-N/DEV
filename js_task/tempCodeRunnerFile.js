@@ -127,3 +127,5 @@
 // }
 // getPaginatedResult(userData,2,20);
 
+const table = require('../js_task/my_plans.json');
+console.table(table);
