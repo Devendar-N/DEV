@@ -37,67 +37,61 @@ const students = [
   { id: 2, name: 'Balu', books: ['Wings of Fire', 'All about Cricket'] },
   { id: 3, name: 'Cathi', books: ['Against the wind', 'The Shining', 'War and Peace'] },
 ];
-function commonInterest(studentsData){
-const bookMap = {};
-for(let i=0;i<studentsData.length;i++){
-  let student = studentsData[i];
-  let studentName = student.name;
-  let studentBooks = student.books;
+function commonInterest(studentsData) {
+  const bookMap = {};
+  for (let i = 0; i < studentsData.length; i++) {
+    let student = studentsData[i];
+    let studentName = student.name;
+    let studentBooks = student.books;
 
-  for(let j =0;j<studentBooks.length;j++){
-    let eachBook = studentBooks[j];
+    for (let j = 0; j < studentBooks.length; j++) {
+      let eachBook = studentBooks[j];
 
-    if (!bookMap[eachBook]) {
-      bookMap[eachBook] = [];
-    }
-    bookMap[eachBook].push(studentName)     //{Wings of Fire': [ 'Arun', 'Balu' ],}
-  }
-  
-    
-}
-console.log(bookMap);
-
-let sharedIntrest = [];
-//loop through each student
-for (let i = 0; i < studentsData.length; i++) {
-  let sharedCount = 0;
-
-  // compare with other student
-  for (let j = 0; j < studentsData.length; j++) {
-    if (i !== j) {
-
-      //loop through books of each student
-      let hasCommonBook = false;
-      for (let k = 0; k < studentsData[i].books.length; k++) {
-        let book = studentsData[i].books[k];
-
-        // compare the book with other student
-        for (let l = 0; l < studentsData[j].books.length; l++) {
-          if (book === studentsData[j].books[l]) {
-            hasCommonBook = true;
-            sharedCount++;
-            break;       // if the same book is found then brek the loop
-          }
-        }if(hasCommonBook)break;
-        
-          
-      }      
-      
+      if (!bookMap[eachBook]) {
+        bookMap[eachBook] = [];
+      }
+      bookMap[eachBook].push(studentName);     //{Wings of Fire': [ 'Arun', 'Balu' ],}
     }
   }
-  sharedIntrest.push({ name: studentsData[i].name, sharedCount });
-}
-console.log(sharedIntrest);
-let mostSharedPerson={};
-for(let i =0;i<sharedIntrest.length;i++){
-  let studentInterest = sharedIntrest[i].sharedCount;
-  let maxCount = 0
-  if(studentInterest>maxCount){
-    maxCount = studentInterest;
+  console.log(bookMap);
+
+  let sharedIntrest = [];
+  //loop through each student
+  for (let i = 0; i < studentsData.length; i++) {
+    let sharedCount = 0;
+
+    // compare with other student
+    for (let j = 0; j < studentsData.length; j++) {
+      if (i !== j) {
+
+        //loop through books of each student
+        let hasCommonBook = false;
+        for (let k = 0; k < studentsData[i].books.length; k++) {
+          let book = studentsData[i].books[k];
+
+          // compare the book with other student
+          for (let l = 0; l < studentsData[j].books.length; l++) {
+            if (book === studentsData[j].books[l]) {
+              hasCommonBook = true;
+              sharedCount++;
+              break;       // if the same book is found then brek the loop
+            }
+          } if (hasCommonBook) break;
+        }
+      }
+    }
+    sharedIntrest.push({ name: studentsData[i].name, sharedCount });
   }
-  
-    mostSharedPerson.push(sharedIntrest[i])
+  let mostSharedPerson = [];  // to save most shared student
+  let maxCount = 0;
+  for (let i = 0; i < sharedIntrest.length; i++) {
+    let studentInterest = sharedIntrest[i].sharedCount;
+
+    if (studentInterest >= maxCount) {
+      maxCount = studentInterest;
+      mostSharedPerson.push(sharedIntrest[i]);
+    }
+  }
+  console.log(mostSharedPerson);
 }
-console.log(mostSharedPerson,"lkutv")
-}
-console.log(commonInterest(students))//error
+commonInterest(students);

@@ -67,4 +67,4 @@ function convertTimeToMinutes(timeToConvert) {
     }
 }
 module.exports = { convertTimeToMinutes };
-console.log(convertTimeToMinutes("02:30 am"))
+//console.log(convertTimeToMinutes("02:30 am"))

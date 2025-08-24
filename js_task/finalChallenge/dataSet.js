@@ -115,7 +115,7 @@ function getPaginatedResult(userData, pageNumber, pageSize) {
     }
 }
 
-// Function to handle Edge cases and calling all function in a function..
+// Function to handle Edge cases and calling all function.
 function handleEdgeCases() {
     const jsonData = require('../users-db.json');
     let validFile = false;

@@ -13,11 +13,13 @@ function numberOfPairs(values, numberOfPirs) {
     else {
         let pairs = [];
         let pairsCount = 0;
+
         //finding pairs count 
         for (let i = 0; i < values.length; i++) {
             for (let j = i + 1; j < values.length; j++) {
+
                 if ((values[i] + values[j]) === numberOfPirs) {
-                    pairsCount++
+                    pairsCount++;
                 }
             }
         }
