@@ -20,7 +20,7 @@ function convertNumberToString(numberToConvert) {
             let character = numbersInString[i];
             let asciiCode = character.charCodeAt();
             const digitWords = ["zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
-            //check the given is a floating value
+            //check the given value is a floating value
             if (asciiCode === 46) {
                 words += "point ";
             }
