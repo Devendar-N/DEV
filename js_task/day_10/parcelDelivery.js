@@ -25,29 +25,42 @@ const parcels = [
   { location: 'sholinganallur', weight: 240 }
 ];
 
-let vehiclesUsed = {};
-let deliveryDetailes;
-let totalVehicles = 0;
+//Sort vehicles by descending weight capacity
+for(let i=0;i<vehicles.length;i++){
+  for(let j=0;j<vehicles.length;j++){
+    if(vehicles[i].weightCapacity<vehicles[j].weightCapacity){
+      let swap_varialbe = vehicles[i];
+      vehicles[i]=vehicles[j];
+      vehicles[j]=swap_varialbe;
+    }
+  }
+}
+
+//loop through parcel to get weight
 for (let i = 0; i < parcels.length; i++) {
+  let vehiclesUsed = {};
   let parcelsWeight = parcels[i].weight;
-  let numberOfVehicles;
+
+  //loop through vehicles to get vehicles capacity
   for (let j = vehicles.length - 1; j >= 0; j--) {
-    vehicleCapacity = vehicles[j].weightCapacity;
-    numberOfVehicles = 0;
+    let vehicleCapacity = vehicles[j].weightCapacity;
+    let vehiclesCount = 0;
 
     while (parcelsWeight >= vehicleCapacity) {
       parcelsWeight -= vehicleCapacity;
-      numberOfVehicles++;
+      vehiclesCount++;
     }
-    if (numberOfVehicles > 0) {
-      vehiclesUsed[vehicles[j].type] = numberOfVehicles;
+
+    if (vehiclesCount > 0) {
+      vehiclesUsed[vehicles[j].type] = vehiclesCount;
     }
-  console.log(`location: ${parcels[i].location} \nweight:${parcels[i].weight}`);
-  let type ;
-  for (type in vehiclesUsed) {
-    deliveryDetailes = '';
-    console.log(`${type} : ${vehiclesUsed[type]}`);
-    totalVehicles = totalVehicles + numberOfVehicles;
   }
-  console.log(`${type}\nTotal vehicles:${totalVehicles}`)}//opt prblm.........
-}
+
+  // display result
+  console.log(`location: ${parcels[i].location}`);
+  let totalVehicles =0 ;
+  for (let type in vehiclesUsed) {
+    console.log(`${type} : ${vehiclesUsed[type]}`);
+    totalVehicles += vehiclesUsed[type]
+  }
+  console.log(`Total vehicles:${totalVehicles}`)}
