@@ -36,4 +36,4 @@ function convertNumberToString(numberToConvert) {
     }
     return words;
 }
-console.log(convertNumberToString("jyri"))
+console.log(convertNumberToString("98"))
